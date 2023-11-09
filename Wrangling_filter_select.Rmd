@@ -207,6 +207,10 @@ movies_1995 <- movies %>%
 movies_1995
 ```
 
+1248 Movies were released in 1995.
+
+2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
+
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
 ```{r}
