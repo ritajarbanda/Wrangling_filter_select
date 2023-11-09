@@ -211,34 +211,73 @@ movies_1995
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
-2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
-
 ```{r}
-
+movies_comedies_rating_120_8 <- movies %>%
+    filter(Comedy == 1 & length >= 120 & rating >= 8.0 & mpaa %in% c("R", "PG-13","PG", "G"))
+movies_comedies_rating_120_8
 ```
 
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
-```{r}
+These 10 comedies are the only ones with a length over 120 minutes, an MPAA rating, and a rating of 8 or higher.
 
+Almost Famous	
+
+Big Fish	
+
+Bowling for Columbine	
+
+Ed Wood 
+
+Forrest Gump	
+
+Homem Que Copiava, O	
+
+Incredibles, The	
+
+Ley de Herodes, La	
+
+Pirates of the Caribbean: The Curse of the Black Pearl	
+
+Sideways
+
+```{r}
+harry_potter_movies <- movies %>%
+  select(title, rating, budget, votes) 
+harry_potter_movies_filtered <- harry_potter_movies %>%
+  filter(str_detect(title, "Harry Potter"))
+harry_potter_movies_filtered
 ```
+
+These 'Harry Potter' movies are included this data subset:
+Harry Potter and the Chamber of Secrets	
+Harry Potter and the Prisoner of Azkaban	
+Harry Potter and the Sorcerer's Stone
+
+'Harry Potter and the Prisoner of Azkaban' is the highest rated with a rating of 7.8.
+
+'Harry Potter and the Sorcerer's Stone' has the most votes on IMDB with 46741.
 
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
-```{r}
 
+```{r}
+movies_comedies_animation_100 <- movies %>%
+    filter(Comedy == 1 | Animation == 1 & votes >= 100)
+
+movies_comedies_animation_100 %>%
+  arrange(desc(budget))
 ```
+
+'Wild Wild West' is the highest budget comedy or animation movie with at least 100 votes on imdb, it is a comedy.
 
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
 ```{r}
-
+movies %>%
+  filter(str_detect(title, "Shrek"))
 ```
 
+Yes they do have it 
 
-
-
-
-
-
-
+You could answer questions like what is the highest budget film in each genre,
